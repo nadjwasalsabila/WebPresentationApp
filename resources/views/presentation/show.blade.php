@@ -410,7 +410,7 @@
 // Jika berbeda → render ulang konten tanpa reload penuh.
 // ====================================================
 
-const POLL_URL    = '{{ route('presentation.poll', $slug) }}';
+const POLL_URL = window.location.origin + '/presentation/{{ $slug }}/poll';
 const POLL_INTERVAL = 5000; // 5 detik
 let currentHash = '{{ md5($details->pluck('id')->implode(',') . $details->pluck('status')->implode(',')) }}';
 

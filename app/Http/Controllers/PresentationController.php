@@ -9,38 +9,31 @@ use Illuminate\Support\Str;
 class PresentationController extends Controller
 {
     /**
-     * Cari tutorial berdasarkan slug yang ada di URL.
-     * Slug adalah bagian terakhir dari URL, contoh:
-     *   URL: http://localhost:8000/presentation/hello-world-php-123456
-     *   Slug: hello-world-php-123456
-     *
-     * Kita cari dengan LIKE karena URL tersimpan lengkap di DB.
+     * Ekstrak slug dari full URL yang tersimpan di DB.
+     * Contoh input:  "http://localhost:8080/presentation/hello-world-php-123"
+     * Contoh output: "hello-world-php-123"
+     */
+    private function extractSlug(string $fullUrl): string
+    {
+        return basename(parse_url($fullUrl, PHP_URL_PATH));
+    }
+
+    /**
+     * Cari tutorial berdasarkan slug.
+     * Karena DB simpan full URL, kita pakai LIKE '%-{slug}'
      */
     private function findBySlug(string $field, string $slug): Tutorial
     {
-        // Coba exact match dulu (paling cepat)
-        $tutorial = Tutorial::where($field, 'like', "%/{$slug}")->first();
-
-        if (!$tutorial) {
-            // Fallback: cocokkan bagian akhir slug
-            $tutorial = Tutorial::all()->first(function ($t) use ($field, $slug) {
-                $stored = $t->$field;
-                $storedSlug = basename(parse_url($stored, PHP_URL_PATH));
-                return $storedSlug === $slug;
-            });
-        }
+        $tutorial = Tutorial::where($field, 'like', "%{$slug}")->first();
 
         abort_if(!$tutorial, 404, 'Tutorial tidak ditemukan.');
 
         return $tutorial;
     }
 
-    /*
-    |------------------------------------------------------------------
-    | ZONA 2 — Halaman Presentation
-    | Hanya tampilkan detail dengan status = show
-    |------------------------------------------------------------------
-    */
+    // -------------------------------------------------------
+    // ZONA 2 — Presentation (publik, hanya status = show)
+    // -------------------------------------------------------
     public function show(string $slug)
     {
         $tutorial = $this->findBySlug('url_presentation', $slug);
@@ -53,12 +46,9 @@ class PresentationController extends Controller
         return view('presentation.show', compact('tutorial', 'details', 'slug'));
     }
 
-    /*
-    |------------------------------------------------------------------
-    | AJAX Polling — dipanggil JS setiap 5 detik
-    | Return JSON berisi detail terbaru + hash untuk deteksi perubahan
-    |------------------------------------------------------------------
-    */
+    // -------------------------------------------------------
+    // AJAX Polling — auto-refresh tiap 5 detik
+    // -------------------------------------------------------
     public function poll(string $slug)
     {
         $tutorial = $this->findBySlug('url_presentation', $slug);
@@ -68,34 +58,25 @@ class PresentationController extends Controller
             ->orderBy('order')
             ->get(['id', 'order', 'status', 'text', 'gambar', 'code', 'url']);
 
-        $hash = md5(
-            $details->pluck('id')->implode(',') .
-            $details->pluck('status')->implode(',')
-        );
-
         return response()->json([
             'count'   => $details->count(),
             'details' => $details,
-            'hash'    => $hash,
+            'hash'    => md5(
+                $details->pluck('id')->implode(',') .
+                $details->pluck('status')->implode(',')
+            ),
         ]);
     }
 
-    /*
-    |------------------------------------------------------------------
-    | ZONA 3 — Finished PDF
-    | Tampilkan SEMUA detail (show + hide) sebagai PDF
-    |------------------------------------------------------------------
-    */
+    // -------------------------------------------------------
+    // ZONA 3 — Finished PDF (publik, semua detail)
+    // -------------------------------------------------------
     public function finished(string $slug)
     {
         $tutorial = $this->findBySlug('url_finished', $slug);
 
-        // Ambil semua detail tanpa filter status
-        $details = $tutorial->details()
-            ->orderBy('order')
-            ->get();
+        $details = $tutorial->details()->orderBy('order')->get();
 
-        // Encode gambar ke base64 agar muncul di PDF DomPDF
         $detailsWithImages = $details->map(function ($detail) {
             $detail->gambar_base64 = null;
 
@@ -123,9 +104,6 @@ class PresentationController extends Controller
             'dpi'                  => 150,
         ]);
 
-        $filename = Str::slug($tutorial->judul) . '.pdf';
-
-        // stream = buka di browser (bisa print/save dari sana)
-        return $pdf->stream($filename);
+        return $pdf->stream(Str::slug($tutorial->judul) . '.pdf');
     }
 }
