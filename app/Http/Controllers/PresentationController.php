@@ -20,7 +20,6 @@ class PresentationController extends Controller
 
     /**
      * Cari tutorial berdasarkan slug.
-     * Karena DB simpan full URL, kita pakai LIKE '%-{slug}'
      */
     private function findBySlug(string $field, string $slug): Tutorial
     {
@@ -30,10 +29,9 @@ class PresentationController extends Controller
 
         return $tutorial;
     }
-
-    // -------------------------------------------------------
-    // ZONA 2 — Presentation (publik, hanya status = show)
-    // -------------------------------------------------------
+    
+    // ZONA 2 — Presentation (publik, hanya status = show
+    
     public function show(string $slug)
     {
         $tutorial = $this->findBySlug('url_presentation', $slug);
@@ -45,10 +43,9 @@ class PresentationController extends Controller
 
         return view('presentation.show', compact('tutorial', 'details', 'slug'));
     }
-
-    // -------------------------------------------------------
-    // AJAX Polling — auto-refresh tiap 5 detik
-    // -------------------------------------------------------
+    
+    // AJAX Polling — auto-refresh tiap 5 deti
+    
     public function poll(string $slug)
     {
         $tutorial = $this->findBySlug('url_presentation', $slug);
@@ -67,10 +64,9 @@ class PresentationController extends Controller
             ),
         ]);
     }
-
-    // -------------------------------------------------------
-    // ZONA 3 — Finished PDF (publik, semua detail)
-    // -------------------------------------------------------
+    
+    // ZONA 3 — Finished PDF (publik, semua detail
+    
     public function finished(string $slug)
     {
         $tutorial = $this->findBySlug('url_finished', $slug);

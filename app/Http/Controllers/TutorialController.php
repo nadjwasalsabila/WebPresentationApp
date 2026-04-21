@@ -68,18 +68,14 @@ class TutorialController extends Controller
         return $url;
     }
 
-    // ================================================
     // INDEX — Tampilkan semua tutorial (DataTable)
-    // ================================================
     public function index()
     {
         $tutorials = Tutorial::orderBy('created_at', 'desc')->get();
         return view('tutorials.index', compact('tutorials'));
     }
 
-    // ================================================
     // CREATE — Tampilkan form tambah tutorial
-    // ================================================
     public function create()
     {
         // Ambil data mata kuliah dari API
@@ -87,9 +83,7 @@ class TutorialController extends Controller
         return view('tutorials.create', compact('mataKuliahList'));
     }
 
-    // ================================================
     // STORE — Simpan tutorial baru ke database
-    // ================================================
     public function store(Request $request)
     {
         $request->validate([
@@ -116,18 +110,14 @@ class TutorialController extends Controller
             ->with('success', 'Tutorial berhasil ditambahkan!');
     }
 
-    // ================================================
     // EDIT — Tampilkan form edit tutorial
-    // ================================================
     public function edit(Tutorial $tutorial)
     {
         $mataKuliahList = $this->getMataKuliah();
         return view('tutorials.edit', compact('tutorial', 'mataKuliahList'));
     }
 
-    // ================================================
     // UPDATE — Simpan perubahan tutorial
-    // ================================================
     public function update(Request $request, Tutorial $tutorial)
     {
         $request->validate([
@@ -145,9 +135,7 @@ class TutorialController extends Controller
             ->with('success', 'Tutorial berhasil diperbarui!');
     }
 
-    // ================================================
     // DESTROY — Hapus tutorial (beserta semua detailnya via cascade)
-    // ================================================
     public function destroy(Tutorial $tutorial)
     {
         $tutorial->delete(); // cascade delete ke tutorial_details otomatis

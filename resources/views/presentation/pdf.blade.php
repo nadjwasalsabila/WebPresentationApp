@@ -68,9 +68,9 @@
         }
 
         .badge-matkul {
-            background: #dbeafe;
-            border-color: #93c5fd;
-            color: #1d4ed8;
+            background: #f3f4f6;
+            border-color: #d1d5db;
+            color: #374151;
         }
 
         /* =====================
@@ -128,11 +128,11 @@
             border-radius: 3pt;
         }
 
-        .label-text   { background: #ede9fe; color: #5b21b6; border: 0.5pt solid #c4b5fd; }
-        .label-code   { background: #fef3c7; color: #92400e; border: 0.5pt solid #fcd34d; }
-        .label-gambar { background: #fce7f3; color: #9d174d; border: 0.5pt solid #f9a8d4; }
-        .label-url    { background: #e0f2fe; color: #075985; border: 0.5pt solid #7dd3fc; }
-        .label-hidden { background: #fff7ed; color: #9a3412; border: 0.5pt solid #fdba74; }
+        .label-text   { background: #f3f4f6; color: #374151; border: 0.5pt solid #d1d5db; }
+        .label-code   { background: #e5e7eb; color: #111827; border: 0.5pt solid #9ca3af; }
+        .label-gambar { background: #f9fafb; color: #4b5563; border: 0.5pt solid #e5e7eb; }
+        .label-url    { background: #f3f4f6; color: #1f2937; border: 0.5pt solid #d1d5db; }
+        .label-hidden { background: #f3f4f6; color: #6b7280; border: 0.5pt solid #e5e7eb; }
 
         /* Konten TEXT */
         .step-text {
@@ -183,13 +183,13 @@
 
         /* Konten URL */
         .step-url-box {
-            border: 0.5pt solid #bfdbfe;
+            border: 0.5pt solid #d1d5db;
             border-radius: 4pt;
-            background: #eff6ff;
+            background: #f9fafb;
             padding: 8pt 12pt;
             margin: 4pt 0;
             font-size: 9pt;
-            color: #1d4ed8;
+            color: #374151;
             word-break: break-all;
         }
 
@@ -210,7 +210,7 @@
         ===================== */
         .hidden-marker {
             font-size: 7pt;
-            color: #d97706;
+            color: #6b7280;
             font-style: italic;
         }
     </style>

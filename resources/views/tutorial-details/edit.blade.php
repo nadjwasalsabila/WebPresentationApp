@@ -5,7 +5,7 @@
 <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow p-6">
 
     <div class="mb-6">
-        <a href="{{ route('tutorial-details.index', $tutorial->id) }}" class="text-blue-600 text-sm hover:underline">← Kembali</a>
+        <a href="{{ route('tutorial-details.index', $tutorial->id) }}" class="text-gray-600 text-sm hover:underline">← Kembali</a>
         <h2 class="text-xl font-bold text-gray-800 mt-2">Edit Langkah #{{ $detail->order }}</h2>
         <p class="text-sm text-gray-500">Tutorial: <strong>{{ $tutorial->judul }}</strong></p>
     </div>
@@ -31,7 +31,7 @@
                            {{ (old('tipe', $tipeSekarang) === $val) ? 'checked' : '' }}
                            onchange="switchTipe('{{ $val }}')">
                     <div class="text-center border-2 rounded-xl py-3 text-sm font-medium transition
-                                peer-checked:border-blue-500 peer-checked:bg-blue-50 peer-checked:text-blue-700
+                                peer-checked:border-gray-500 peer-checked:bg-gray-50 peer-checked:text-gray-700
                                 border-gray-200 text-gray-600 hover:border-gray-300">
                         {{ $label }}
                     </div>
@@ -44,7 +44,7 @@
         <div class="mb-5">
             <div id="area-text" class="konten-area">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Teks Penjelasan</label>
-                <textarea name="text" rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none resize-y">{{ old('text', $detail->text) }}</textarea>
+                <textarea name="text" rows="5" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-gray-400 focus:outline-none resize-y">{{ old('text', $detail->text) }}</textarea>
             </div>
 
             <div id="area-gambar" class="konten-area hidden">
@@ -60,13 +60,13 @@
 
             <div id="area-code" class="konten-area hidden">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Cuplikan Kode</label>
-                <textarea name="code" rows="8" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm font-mono focus:ring-2 focus:ring-blue-400 focus:outline-none resize-y bg-gray-900 text-green-400">{{ old('code', $detail->code) }}</textarea>
+                <textarea name="code" rows="8" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm font-mono focus:ring-2 focus:ring-gray-400 focus:outline-none resize-y bg-gray-900 text-gray-400">{{ old('code', $detail->code) }}</textarea>
             </div>
 
             <div id="area-url" class="konten-area hidden">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Alamat URL</label>
                 <input type="url" name="url" value="{{ old('url', $detail->url) }}"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-gray-400 focus:outline-none">
             </div>
         </div>
 
@@ -75,7 +75,7 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Urutan (Order)</label>
                 <input type="number" name="order" value="{{ old('order', $detail->order) }}" min="1"
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-gray-400 focus:outline-none">
             </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
@@ -87,7 +87,7 @@
         </div>
 
         <div class="flex gap-3">
-            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-2 rounded-lg text-sm transition">
+            <button type="submit" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-2 rounded-lg text-sm transition">
                 Update Langkah
             </button>
             <a href="{{ route('tutorial-details.index', $tutorial->id) }}"
