@@ -36,10 +36,10 @@
                 <select name="kode_matkul" class="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-gray-400 focus:outline-none">
                     @foreach($mataKuliahList as $mk)
                         <option
-                            value="{{ $mk['kode'] ?? $mk['kode_matkul'] ?? '' }}"
-                            {{ ($tutorial->kode_matkul == ($mk['kode'] ?? '')) ? 'selected' : '' }}
+                            value="{{ $mk['kdmk'] }}"
+                            {{ ($tutorial->kode_matkul == $mk['kdmk']) ? 'selected' : '' }}
                         >
-                            {{ $mk['kode'] ?? '' }} — {{ $mk['nama'] ?? $mk['nama_matkul'] ?? '' }}
+                            {{ $mk['kdmk'] }} — {{ $mk['nama'] }}
                         </option>
                     @endforeach
                 </select>

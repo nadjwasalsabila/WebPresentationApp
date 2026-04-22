@@ -44,12 +44,11 @@
                 >
                     <option value="">-- Pilih Mata Kuliah --</option>
                     @foreach($mataKuliahList as $mk)
-                        {{-- Sesuaikan key 'kode' dan 'nama' dengan response API --}}
                         <option
-                            value="{{ $mk['kode'] ?? $mk['kode_matkul'] ?? $mk['id'] }}"
-                            {{ old('kode_matkul') == ($mk['kode'] ?? '') ? 'selected' : '' }}
+                            value="{{ $mk['kdmk'] }}"
+                            {{ old('kode_matkul') == $mk['kdmk'] ? 'selected' : '' }}
                         >
-                            {{ $mk['kode'] ?? '' }} — {{ $mk['nama'] ?? $mk['nama_matkul'] ?? '' }}
+                            {{ $mk['kdmk'] }} — {{ $mk['nama'] }}
                         </option>
                     @endforeach
                 </select>

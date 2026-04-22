@@ -22,9 +22,7 @@ class TutorialController extends Controller
                 ->withHeaders([
                     'Authorization' => 'Bearer ' . session('refreshToken'),
                 ])
-                ->post("{$this->apiBase}/getMakul", [
-                    'refreshToken' => session('refreshToken'),
-                ]);
+                ->get("{$this->apiBase}/getMakul");
 
             if ($response->successful()) {
                 $data = $response->json();
