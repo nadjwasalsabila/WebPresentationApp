@@ -20,7 +20,7 @@ class TutorialSeeder extends Seeder
             'kode_matkul'      => 'A11.64404',
             'url_presentation' => 'http://localhost:8080/presentation/hello-world-dengan-php-5487645461659754',
             'url_finished'     => 'http://localhost:8080/finished/hello-world-dengan-php-8758648921535',
-            'creator_email'    => 'nadjwasalsabila@gmail.com',
+            'creator_email'    => 'aprilyani.safitri@gmail.com',
         ]);
 
         // Buat 11 detail untuk tutorial ini
@@ -53,7 +53,7 @@ class TutorialSeeder extends Seeder
             'kode_matkul'      => 'A11.54314',
             'url_presentation' => 'http://localhost:8080/presentation/instalasi-laravel-11-3948759283749',
             'url_finished'     => 'http://localhost:8080/finished/instalasi-laravel-11-9087654321987',
-            'creator_email'    => 'nadjwasalsabila@gmail.com',
+            'creator_email'    => 'aprilyani.safitri@gmail.com',
         ]);
 
         $detailsLaravel = [

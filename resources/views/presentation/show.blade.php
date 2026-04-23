@@ -11,6 +11,7 @@
 
     {{-- Highlight.js untuk syntax highlighting kode --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
     <style>
@@ -21,17 +22,17 @@
             --font-body: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --bg:          #ffffff;
-            --bg-sidebar:  #f7f6f3;
-            --text:        #37352f;
-            --text-muted:  #9b9a97;
-            --text-light:  #c5c4c0;
-            --border:      #e9e8e4;
-            --accent:      #2eaadc;
-            --accent-soft: #e7f5fb;
-            --code-bg:     #f1f0ed;
-            --step-show:   #2eaadc;
-            --step-hide:   #e9e8e4;
-            --radius:      6px;
+            --bg-sidebar:  #f8f9fa;
+            --text:        #1f2937;
+            --text-muted:  #6b7280;
+            --text-light:  #d1d5db;
+            --border:      #e5e7eb;
+            --accent:      #374151;
+            --accent-soft: #f3f4f6;
+            --code-bg:     #f9fafb;
+            --step-show:   #4b5563;
+            --step-hide:   #e5e7eb;
+            --radius:      8px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,12 +151,12 @@
         }
 
         .badge-matkul {
-            background: var(--accent-soft);
-            color: var(--accent);
+            background: #1f2937;
+            color: #f9fafb;
             font-size: 11px;
             font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
+            padding: 3px 10px;
+            border-radius: 6px;
         }
 
         /* ========================================
@@ -201,10 +202,10 @@
             letter-spacing: 0.06em;
         }
 
-        .badge-text   { background: #f0e6ff; color: #7c3aed; }
-        .badge-code   { background: #fff3e0; color: #d97706; }
-        .badge-gambar { background: #fce7f3; color: #be185d; }
-        .badge-url    { background: #e0f2fe; color: #0284c7; }
+        .badge-text   { background: #f3f4f6; color: #374151; }
+        .badge-code   { background: #1f2937; color: #f9fafb; }
+        .badge-gambar { background: #e5e7eb; color: #374151; }
+        .badge-url    { background: #374151; color: #f9fafb; }
 
         /* Konten text */
         .step-text {

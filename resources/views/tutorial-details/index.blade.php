@@ -83,9 +83,9 @@
                             <button onclick="toggleStatus({{ $tutorial->id }}, {{ $detail->id }}, this)"
                                 data-status="{{ $detail->status }}" class="text-xs font-semibold px-3 py-1.5 rounded-full border transition
                                                                             {{ $detail->status === 'show'
-                        ? 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
-                        : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200' }}">
-                                {{ $detail->status === 'show' ? '👁 Show' : '🙈 Hide' }}
+                        ? 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                        : 'bg-gray-600 text-white border-gray-600 hover:bg-gray-700' }}">
+                                {{ $detail->status === 'show' ? 'Show' : 'Hide' }}
                             </button>
                         </div>
 
@@ -136,10 +136,10 @@
                     if (data.success) {
                         const isShow = data.new_status === 'show';
                         btn.dataset.status = data.new_status;
-                        btn.textContent = isShow ? '👁 Show' : '🙈 Hide';
+                        btn.textContent = isShow ? 'Show' : 'Hide';
                         btn.className = `text-xs font-semibold px-3 py-1.5 rounded-full border transition ${isShow
-                            ? 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
-                            : 'bg-gray-100 text-gray-500 border-gray-300 hover:bg-gray-200'
+                            ? 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                            : 'bg-gray-600 text-white border-gray-600 hover:bg-gray-700'
                             }`;
                     }
                 })

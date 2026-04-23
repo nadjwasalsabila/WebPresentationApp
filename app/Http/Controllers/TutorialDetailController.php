@@ -38,7 +38,6 @@ class TutorialDetailController extends Controller
             'tipe'   => 'required|in:text,gambar,code,url',
             'order'  => 'required|integer|min:1',
             'status' => 'required|in:show,hide',
-            // Validasi konten berdasarkan tipe yang dipilih
             'text'   => 'required_if:tipe,text|nullable|string',
             'code'   => 'required_if:tipe,code|nullable|string',
             'url'    => 'required_if:tipe,url|nullable|url',

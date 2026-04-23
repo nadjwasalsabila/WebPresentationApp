@@ -51,7 +51,7 @@ class PresentationController extends Controller
         $tutorial = $this->findBySlug('url_presentation', $slug);
 
         $details = $tutorial->details()
-            ->where('status', 'show')
+            ->where('status', 'show') //filter
             ->orderBy('order')
             ->get(['id', 'order', 'status', 'text', 'gambar', 'code', 'url']);
 
